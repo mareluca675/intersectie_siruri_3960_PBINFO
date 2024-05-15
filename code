@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int a[100001], b[100001];
+
+ifstream fin("intersectie.in");
+ofstream fout("intersectie.out");
+
+int main()
+{
+    int num, n = 1;
+
+    while(fin >> a[n] and a[n]){
+        ++ n;
+    }
+
+    int m;
+    while(fin >> b[0]){
+        m = 1;
+        while(fin >> b[m] and b[m]){
+            ++ m;
+        }
+
+        for(int i = 0; i < n; ++ i){
+            if(a[i] != -1){
+                if(!binary_search(b, b + m, a[i])){
+                    a[i] = -1;
+                }
+            }
+        }
+    }
+
+    bool estiProst = false;
+    for(int i = 0; i < n; ++ i){
+        if(a[i] != -1){
+            fout << a[i] << ' ';
+            estiProst = true;
+        }
+    }
+
+    if(!estiProst){
+        fout << "nu exista";
+        cout << "esti prost";
+    }
+}
